@@ -57,22 +57,20 @@ namespace iki
 {
 	/* Functions */
 
-	// FNV1A 32-bit Hash Functions
-	inline constexpr uint32_t fnv1a_hash_uint32(const char* input, uint32_t hash = (uint32_t)FNV1A_UINT32_OFFSET)
+	// FNV1A Hash Functions
+	inline constexpr uint32_t fnv1a_uint32(const char* input, uint32_t hash = (uint32_t)FNV1A_UINT32_OFFSET)
 	{
 		if (input[0] != '\0')
 		{
-			hash = fnv1a_hash_uint32(&input[1], ((hash ^ ((uint8_t)input[0])) * (uint32_t)FNV1A_UINT32_PRIME));
+			hash = fnv1a_uint32(&input[1], ((hash ^ ((uint8_t)input[0])) * (uint32_t)FNV1A_UINT32_PRIME));
 		};
 		return hash;
 	};
-
-	// FNV1A 64-bit Hash Functions
-	inline constexpr uint64_t fnv1a_hash_uint64(const char* input, uint64_t hash = (uint64_t)FNV1A_UINT64_OFFSET)
+	inline constexpr uint64_t fnv1a_uint64(const char* input, uint64_t hash = (uint64_t)FNV1A_UINT64_OFFSET)
 	{
 		if (input[0] != '\0')
 		{
-			hash = fnv1a_hash_uint64(&input[1], ((hash ^ ((uint8_t)input[0])) * (uint64_t)FNV1A_UINT64_PRIME));
+			hash = fnv1a_uint64(&input[1], ((hash ^ ((uint8_t)input[0])) * (uint64_t)FNV1A_UINT64_PRIME));
 		};
 		return hash;
 	};

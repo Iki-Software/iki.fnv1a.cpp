@@ -23,4 +23,5 @@ You can find the original author's page discussing this algorithm at:
 Copyright 2025 - 2026, Iki Software LLC. All rights reserved.
 
 ## License
-This repo is licensed under an MIT license. For more info, please see the `LICENSE.md` file, or the license section found in the provided source-file.
+This repo is licensed under an MIT license. For more info, please see the
+`LICENSE.md` file, or the license section found in the provided source-file.
