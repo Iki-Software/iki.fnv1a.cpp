@@ -3,6 +3,9 @@
 	# FNV1A Hash Library
 	By Joseph Juma (Iki Software LLC)
 
+	## Version
+	v1.0.0
+
 	## About
 	This single-header library provides an implement of the FNV1A
 	(Fowler Noll Vo alternate algorithm) hash function. This is a
@@ -17,12 +20,13 @@
 
 	## Dependencies
 	1. C++ 11 standard library. ("stdint.h")
+	2. C++ 14 for `constexpr` keyword.
 
 	## License
-	Copyright 2025, Iki Software LLC.
+	Copyright 2025 - 2026, Iki Software LLC.
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of
-	this software and associated documentation files (the “Software”), to deal in
+	this software and associated documentation files (the "Software"), to deal in
 	the Software without restriction, including without limitation the rights to
 	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
 	of the Software, and to permit persons to whom the Software is furnished to do
@@ -31,7 +35,7 @@
 	The above copyright notice and this permission notice shall be included in all
 	copies or substantial portions of the Software.
 
-	THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -44,17 +48,15 @@
 /* Deps */
 #include <stdint.h>
 
-/* Macros */
-
-// FNV1A Macros
-#define FNV1A_UINT32_PRIME 16777619ul
-#define FNV1A_UINT32_OFFSET 2166136261ul
-
-#define FNV1A_UINT64_PRIME 109951162811ull
-#define FNV1A_UINT64_OFFSET 14695981039346656037ull
-
 namespace iki
 {
+	/* Constants */
+	constexpr uint32_t FNV1A_UINT32_PRIME =	16777619ul;
+	constexpr uint32_t FNV1A_UINT32_OFFSET = 2166136261ul;
+
+	constexpr uint64_t FNV1A_UINT64_PRIME = 1099511628211ull;
+	constexpr uint64_t FNV1A_UINT64_OFFSET = 14695981039346656037ull;
+
 	/* Functions */
 
 	// FNV1A Hash Functions
@@ -62,6 +64,7 @@ namespace iki
 	{
 		if (input[0] != '\0')
 		{
+			// @note: `&input[1]` is incrementing the index by recursion.
 			hash = fnv1a_uint32(&input[1], ((hash ^ ((uint8_t)input[0])) * (uint32_t)FNV1A_UINT32_PRIME));
 		};
 		return hash;
@@ -70,6 +73,7 @@ namespace iki
 	{
 		if (input[0] != '\0')
 		{
+			// @note: `&input[1]` is incrementing the index by recursion.
 			hash = fnv1a_uint64(&input[1], ((hash ^ ((uint8_t)input[0])) * (uint64_t)FNV1A_UINT64_PRIME));
 		};
 		return hash;

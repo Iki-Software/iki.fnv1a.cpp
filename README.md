@@ -2,7 +2,7 @@
 By Joseph Juma
 
 ## Version
-0.1.0
+1.0.0
 
 ## About
 This single-header library provides an implement of the FNV1A
@@ -18,6 +18,7 @@ You can find the original author's page discussing this algorithm at:
 
 ## Dependencies
 1. C++ 11 standard library. ("stdint.h")
+2. C++ 14 for `constexpr` function behavior.
 
 ## Copyright
 Copyright 2025 - 2026, Iki Software LLC. All rights reserved.
